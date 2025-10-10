@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import rexLogoInline from "./assets/rex_logo_icon.png?inline";
+import bkLogoInline from "./assets/bk_logo.png?inline";
+import popeyesLogoInline from "./assets/popeyes_logo.png?inline";
+import phoneIconInline from "./assets/phone_icon.png?inline";
+import emailIconInline from "./assets/email_icon.png?inline";
+import linkedinIconInline from "./assets/linkedin_icon.png?inline";
+import locationIconInline from "./assets/location_icon.png?inline";
 
 function App() {
   const [signatureHTML, setSignatureHTML] = useState("");
@@ -18,13 +25,22 @@ function App() {
     "Czech Republic": "+420",
     Romania: "+40",
   };
+  const assetInlineMap = {
+    "rex_logo_icon.png": rexLogoInline,
+    "bk_logo.png": bkLogoInline,
+    "popeyes_logo.png": popeyesLogoInline,
+    "phone_icon.png": phoneIconInline,
+    "email_icon.png": emailIconInline,
+    "linkedin_icon.png": linkedinIconInline,
+    "location_icon.png": locationIconInline,
+  };
 
   useEffect(() => {
     const loadTemplate = async () => {
       const templateIds = [1, 2, 3];
       const loadedTemplates = {};
       for (const id of templateIds) {
-        const res = await fetch(`/templates/template${id}.html`);
+        const res = await fetch(`${import.meta.env.BASE_URL}templates/template${id}.html`);
         const text = await res.text();
         loadedTemplates[id] = text;
       }
@@ -84,7 +100,18 @@ function App() {
     if (!validateForm()) return;
     let html = templates[form.templateId];
     if (!html) return;
+    const resolvedBase = new URL(
+      import.meta.env.BASE_URL || "/",
+      window.location.origin
+    );
+    const assetBase = new URL("assets/", resolvedBase).href;
     html = html
+      .replace(/{{assetBase}}([^"']+)/g, (_, assetName) => {
+        const cleaned = assetName.replace(/^assets\//, "");
+        return (
+          assetInlineMap[cleaned] ?? new URL(cleaned, assetBase).href
+        );
+      })
       .replace(/{{name}}/g, form.name)
       .replace(/{{surname}}/g, form.surname)
       .replace(/{{position}}/g, form.position)
@@ -121,7 +148,7 @@ function App() {
           <br />
           5. Select the entire signature (<strong>Ctrl + A</strong>).
           <br />
-          6. Make sure Outlook Web is open in your browser, then drag the selected signature into the Signature field:  
+          6. Make sure Outlook Web is open in your browser, then paste signature into the Signature field:  
           <strong> Settings → Accounts → Signature</strong>.
         </p>
       </div>

@@ -1,42 +1,38 @@
-<!-- SIGNATURE 1: Burger King and Popeyes -->
 <!DOCTYPE html>
 <html>
   <body style="margin:0; padding:0;">
-    <!-- Główna tabela podpisu -->
     <table
       cellpadding="0"
       cellspacing="0"
-      width="600"
+      width="650"
       style="
         font-family: Arial, sans-serif;
         color: #444444;
         border-collapse: collapse;
-        table-layout: fixed; /* stabilizuje kolumny */
+        table-layout: fixed;
       "
     >
       <tr>
         <!-- Logo -->
-        <td width="150" style="padding:0;">
+        <td width="140" style="padding:0;">
           <img
             src="{{assetBase}}rex_logo_icon.png"
             alt="Rex Concepts"
-            width="140"
-            height="140"
+            width="130"
+            height="130"
             style="display:block; border:none;"
           />
         </td>
 
         <!-- Dane personalne -->
         <td
-          width="230"
+          width="200"
           style="
             padding-left:10px;
             padding-top:10px;
             vertical-align:middle;
-            width:230px; max-width:230px; /* twarda szerokość */
-            word-break: break-word;      /* dziel długie nazwiska */
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+            word-break:break-word;
+            overflow-wrap:break-word;
           "
         >
           <p style="margin:0; font-size:14px; font-weight:bold; color:#333333;">
@@ -48,7 +44,6 @@
           <p style="margin:4px 0 0; font-size:14px; font-weight:bold; color:#f49163;">
             Rex Concepts CEE
           </p>
-
           <p style="margin:6px 0 0;">
             <a
               href="https://burgerking.pl/"
@@ -71,48 +66,31 @@
           </p>
         </td>
 
-        <!-- Separator pionowy -->
+        <!-- Separator -->
         <td width="1" style="background-color:#f49163; padding:0;"></td>
 
         <!-- Kontakt -->
-        <td width="210" style="padding-left:10px; vertical-align:middle;">
+        <td width="309" style="padding-left:10px; vertical-align:middle;">
           <table cellpadding="0" cellspacing="0" style="border-collapse:collapse; width:100%;">
             <!-- Telefon -->
             <tr>
               <td width="20" valign="middle" style="padding:4px 0;">
-                <img
-                  src="{{assetBase}}phone_icon.png"
-                  alt="Phone"
-                  width="15"
-                  height="15"
-                  style="display:block; border:none;"
-                />
+                <img src="{{assetBase}}phone_icon.png" width="15" height="15" style="display:block; border:none;" />
               </td>
               <td valign="middle" style="padding:4px 0 4px 5px; font-size:12px;">
                 {{phone}}
               </td>
             </tr>
 
-            <!-- E-mail (nowrap) -->
+            <!-- E-mail -->
             <tr>
               <td width="20" valign="middle" style="padding:4px 0;">
-                <img
-                  src="{{assetBase}}email_icon.png"
-                  alt="Email"
-                  width="15"
-                  height="15"
-                  style="display:block; border:none;"
-                />
+                <img src="{{assetBase}}email_icon.png" width="15" height="15" style="display:block; border:none;" />
               </td>
               <td valign="middle" style="padding:4px 0 4px 5px; font-size:12px;">
                 <a
                   href="mailto:{{email}}"
-                  style="
-                    color:#3719dd;
-                    text-decoration:none;
-                    white-space:nowrap;        /* nie łam e-maila */
-                    display:inline-block;
-                  "
+                  style="color:#3719dd; text-decoration:none; white-space:nowrap;"
                 >{{email}}</a>
               </td>
             </tr>
@@ -120,13 +98,7 @@
             <!-- LinkedIn -->
             <tr>
               <td width="20" valign="middle" style="padding:4px 0;">
-                <img
-                  src="{{assetBase}}linkedin_icon.png"
-                  alt="LinkedIn"
-                  width="15"
-                  height="15"
-                  style="display:block; border:none;"
-                />
+                <img src="{{assetBase}}linkedin_icon.png" width="15" height="15" style="display:block; border:none;" />
               </td>
               <td valign="middle" style="padding:4px 0 4px 5px; font-size:12px;">
                 <a
@@ -140,13 +112,7 @@
             <!-- Adres -->
             <tr>
               <td width="20" valign="middle" style="padding:4px 0;">
-                <img
-                  src="{{assetBase}}location_icon.png"
-                  alt="Address"
-                  width="15"
-                  height="15"
-                  style="display:block; border:none;"
-                />
+                <img src="{{assetBase}}location_icon.png" width="15" height="15" style="display:block; border:none;" />
               </td>
               <td valign="middle" style="padding:4px 0 4px 5px; font-size:12px;">
                 ul. Gwiaździsta 66, 53-413 Wrocław
