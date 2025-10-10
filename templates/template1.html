@@ -1,9 +1,8 @@
 <!-- SIGNATURE 1: Burger King and Popeyes -->
-
 <!DOCTYPE html>
 <html>
-  <body style="margin: 0; padding: 0">
-    <!-- Główna tabela podpisu, szerokość 600px -->
+  <body style="margin:0; padding:0;">
+    <!-- Główna tabela podpisu -->
     <table
       cellpadding="0"
       cellspacing="0"
@@ -12,190 +11,167 @@
         font-family: Arial, sans-serif;
         color: #444444;
         border-collapse: collapse;
+        table-layout: fixed; /* stabilizuje kolumny */
       "
     >
       <tr>
-        <!-- Logo firma -->
-        <td width="160" style="padding: 0">
+        <!-- Logo -->
+        <td width="150" style="padding:0;">
           <img
             src="{{assetBase}}rex_logo_icon.png"
             alt="Rex Concepts"
             width="140"
             height="140"
-            style="display: block; border: none"
+            style="display:block; border:none;"
           />
         </td>
+
         <!-- Dane personalne -->
         <td
-          width="240"
-          style="padding-left: 10px; vertical-align: middle; padding-top: 10px"
+          width="230"
+          style="
+            padding-left:10px;
+            padding-top:10px;
+            vertical-align:middle;
+            width:230px; max-width:230px; /* twarda szerokość */
+            word-break: break-word;      /* dziel długie nazwiska */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+          "
         >
-          <p
-            style="
-              margin: 0;
-              font-size: 14px;
-              font-weight: bold;
-              color: #333333;
-            "
-          >
+          <p style="margin:0; font-size:14px; font-weight:bold; color:#333333;">
             {{name}} {{surname}}
           </p>
-          <p style="margin: 4px 0 0; font-size: 12px; color: #555555">
+          <p style="margin:4px 0 0; font-size:12px; color:#555555;">
             {{position}}
           </p>
-          <p
-            style="
-              margin: 4px 0 0;
-              font-size: 14px;
-              font-weight: bold;
-              color: #f49163;
-            "
-          >
+          <p style="margin:4px 0 0; font-size:14px; font-weight:bold; color:#f49163;">
             Rex Concepts CEE
           </p>
-          <p style="margin: 6px 0 0">
+
+          <p style="margin:6px 0 0;">
             <a
               href="https://burgerking.pl/"
               target="_blank"
-              style="text-decoration: none; border: none; display: inline-block"
+              style="text-decoration:none; border:none; display:inline-block;"
             >
               <img
                 src="{{assetBase}}bk_logo.png"
                 alt="Burger King"
                 width="70"
-                height="auto"
-                style="display: inline-block; border: none; margin-right: 8px"
+                style="display:inline-block; border:none; margin-right:8px;"
               />
               <img
                 src="{{assetBase}}popeyes_logo.png"
                 alt="Popeyes"
                 width="70"
-                height="auto"
-                style="display: inline-block; border: none"
+                style="display:inline-block; border:none;"
               />
             </a>
           </p>
         </td>
+
         <!-- Separator pionowy -->
-        <td width="1" style="background-color: #f49163; padding: 0"></td>
+        <td width="1" style="background-color:#f49163; padding:0;"></td>
+
         <!-- Kontakt -->
-        <td width="199" style="padding-left: 10px; vertical-align: middle">
-          <table
-            cellpadding="0"
-            cellspacing="0"
-            style="border-collapse: collapse"
-          >
+        <td width="210" style="padding-left:10px; vertical-align:middle;">
+          <table cellpadding="0" cellspacing="0" style="border-collapse:collapse; width:100%;">
             <!-- Telefon -->
             <tr>
-              <td width="20" valign="middle" style="padding: 4px 0">
+              <td width="20" valign="middle" style="padding:4px 0;">
                 <img
                   src="{{assetBase}}phone_icon.png"
                   alt="Phone"
                   width="15"
                   height="15"
-                  style="display: block; border: none"
+                  style="display:block; border:none;"
                 />
               </td>
-              <td
-                valign="middle"
-                style="padding: 4px 0 4px 5px; font-size: 12px"
-              >
+              <td valign="middle" style="padding:4px 0 4px 5px; font-size:12px;">
                 {{phone}}
               </td>
             </tr>
-            <!-- E-mail -->
+
+            <!-- E-mail (nowrap) -->
             <tr>
-              <td width="20" valign="middle" style="padding: 4px 0">
+              <td width="20" valign="middle" style="padding:4px 0;">
                 <img
                   src="{{assetBase}}email_icon.png"
                   alt="Email"
                   width="15"
                   height="15"
-                  style="display: block; border: none"
+                  style="display:block; border:none;"
                 />
               </td>
-              <td
-                valign="middle"
-                style="padding: 4px 0 4px 5px; font-size: 12px"
-              >
+              <td valign="middle" style="padding:4px 0 4px 5px; font-size:12px;">
                 <a
                   href="mailto:{{email}}"
-                  style="color: #3719dd; text-decoration: none"
-                  >{{email}}</a
-                >
+                  style="
+                    color:#3719dd;
+                    text-decoration:none;
+                    white-space:nowrap;        /* nie łam e-maila */
+                    display:inline-block;
+                  "
+                >{{email}}</a>
               </td>
             </tr>
+
             <!-- LinkedIn -->
             <tr>
-              <td width="20" valign="middle" style="padding: 4px 0">
+              <td width="20" valign="middle" style="padding:4px 0;">
                 <img
                   src="{{assetBase}}linkedin_icon.png"
                   alt="LinkedIn"
                   width="15"
                   height="15"
-                  style="display: block; border: none"
+                  style="display:block; border:none;"
                 />
               </td>
-              <td
-                valign="middle"
-                style="padding: 4px 0 4px 5px; font-size: 12px"
-              >
+              <td valign="middle" style="padding:4px 0 4px 5px; font-size:12px;">
                 <a
                   href="https://www.linkedin.com/company/rex-concepts-cee/"
                   target="_blank"
-                  style="color: #0077b5; text-decoration: none"
-                  >Find us on LinkedIn</a
-                >
+                  style="color:#0077b5; text-decoration:none;"
+                >Find us on LinkedIn</a>
               </td>
             </tr>
+
             <!-- Adres -->
             <tr>
-              <td width="20" valign="middle" style="padding: 4px 0">
+              <td width="20" valign="middle" style="padding:4px 0;">
                 <img
                   src="{{assetBase}}location_icon.png"
                   alt="Address"
                   width="15"
                   height="15"
-                  style="display: block; border: none"
+                  style="display:block; border:none;"
                 />
               </td>
-              <td
-                valign="middle"
-                style="padding: 4px 0 4px 5px; font-size: 12px"
-              >
+              <td valign="middle" style="padding:4px 0 4px 5px; font-size:12px;">
                 ul. Gwiaździsta 66, 53-413 Wrocław
               </td>
             </tr>
           </table>
         </td>
       </tr>
+
       <!-- Klauzula prawna -->
       <tr>
-        <td
-          colspan="4"
-          style="
-            padding-top: 12px;
-            font-size: 8px;
-            color: #777777;
-            line-height: 1.3;
-          "
-        >
+        <td colspan="4" style="padding-top:12px; font-size:8px; color:#777777; line-height:1.3;">
           REX CONCEPTS BK POLAND S.A. with registered office in Wrocław 53-413,
           Gwiaździsta 66 street, entered into National Court Register kept by
           the District Court for Wrocław-Fabryczna in Wrocław, VI Commercial
           Division under KRS 0000539234, NIP 1070031710, REGON 360737061, share
           capital of PLN 122,964,120.00.
-          <a
-            href="https://burgerking.pl/privacy-policy"
-            style="color: #3719dd; text-decoration: none"
-            >https://burgerking.pl/privacy-policy</a
-          >
-          <br /><br />
-          <em
-            >This message may contain confidential information. If you’re not
-            the intended recipient, please delete it and notify the sender. Do
-            not copy or distribute this message.</em
-          >
+          <a href="https://burgerking.pl/privacy-policy" style="color:#3719dd; text-decoration:none;">
+            https://burgerking.pl/privacy-policy
+          </a>
+          <br><br>
+          <em>
+            This message may contain confidential information. If you’re not the intended
+            recipient, please delete it and notify the sender. Do not copy or distribute this message.
+          </em>
         </td>
       </tr>
     </table>
