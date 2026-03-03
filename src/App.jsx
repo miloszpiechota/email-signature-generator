@@ -9,6 +9,25 @@ import linkedinIconInline from "./assets/linkedin_icon.png?inline";
 import locationIconInline from "./assets/location_icon.png?inline";
 
 function App() {
+  const templateOptionsByCountry = {
+    Poland: [
+      { id: 1, label: "1. Signature with Popeyes and Burger King logo" },
+      { id: 2, label: "2. Signature with Popeyes logo" },
+      { id: 3, label: "3. Signature with Burger King logo" },
+    ],
+    "Czech Republic": [
+      { id: 4, label: "4. Signature with Burger King logo" },
+      { id: 5, label: "5. Signature with Popeyes logo" },
+      { id: 6, label: "6. Signature with Popeyes and Burger King logo" },
+    ],
+    Romania: [
+      { id: 1, label: "1. Signature with Popeyes and Burger King logo" },
+      { id: 2, label: "2. Signature with Popeyes logo" },
+      { id: 3, label: "3. Signature with Burger King logo" },
+    ],
+  };
+  const getCountryTemplates = (country) =>
+    templateOptionsByCountry[country] ?? templateOptionsByCountry.Poland;
   const [signatureHTML, setSignatureHTML] = useState("");
   const [templates, setTemplates] = useState({});
   const [form, setForm] = useState({
@@ -34,10 +53,17 @@ function App() {
     "linkedin_icon.png": linkedinIconInline,
     "location_icon.png": locationIconInline,
   };
+  const availableTemplates = getCountryTemplates(form.country);
 
   useEffect(() => {
     const loadTemplate = async () => {
-      const templateIds = [1, 2, 3];
+      const templateIds = [
+        ...new Set(
+          Object.values(templateOptionsByCountry)
+            .flat()
+            .map(({ id }) => id)
+        ),
+      ];
       const loadedTemplates = {};
       for (const id of templateIds) {
         const res = await fetch(`${import.meta.env.BASE_URL}templates/template${id}.html`);
@@ -51,7 +77,10 @@ function App() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    setForm((prev) => ({
+      ...prev,
+      [name]: name === "templateId" ? Number(value) : value,
+    }));
   };
 
   const validateForm = () => {
@@ -168,7 +197,21 @@ function App() {
                   className={`country-btn ${
                     form.country === country ? "selected" : ""
                   }`}
-                  onClick={() => setForm((prev) => ({ ...prev, country }))}
+                  onClick={() =>
+                    setForm((prev) => {
+                      const countryTemplates = getCountryTemplates(country);
+                      const currentTemplateId = Number(prev.templateId);
+                      return {
+                        ...prev,
+                        country,
+                        templateId: countryTemplates.some(
+                          ({ id }) => id === currentTemplateId
+                        )
+                          ? currentTemplateId
+                          : countryTemplates[0].id,
+                      };
+                    })
+                  }
                 >
                   {country}
                 </button>
@@ -181,12 +224,12 @@ function App() {
           <input name="position" placeholder="Enter your job position" />
           <input name="phone" placeholder="Enter your phone" />
           <input name="email" placeholder="Enter your email @rc-cee.com" />
-          <select name="templateId">
-            <option value="1">
-              1. Signature with Popeyes and Burger King logo
-            </option>
-            <option value="2">2. Signature with Popeyes logo</option>
-            <option value="3">3. Signature with Burger King logo</option>
+          <select name="templateId" value={form.templateId}>
+            {availableTemplates.map(({ id, label }) => (
+              <option key={id} value={id}>
+                {label}
+              </option>
+            ))}
           </select>
           <button type="button" onClick={handleGenerate}>
             Generate
